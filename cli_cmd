@@ -1,0 +1,2 @@
+D:\Users\pavanonkar\IdeaProjects\Framework_Proj>robot -v APPLICATION_HOST:equip.stage.shenzyn.com -v BROWSER:gc --include SmokeANDUI --outputdir reports/ --r
+eporttitle SmokeANDUI testsuites/
