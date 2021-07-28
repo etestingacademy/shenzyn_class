@@ -29,7 +29,7 @@ API.Login To Application
     ${headers}=     Create dictionary   Content-Type=application/json
     create session      shengzyn_app    ${host_uri}      verify=False
     #    post request
-    ${resp}=    post request     shengzyn_app    ${api_login}    data=${body}    headers=${headers}
+    ${resp}=    post request     shengzyn_app    ${login_api}    data=${body}    headers=${headers}
 #    Log to console      ${resp.json()}
     should be equal as integers     ${resp.status_code}     ${SUCCESS}     Issue in the API execution
     dictionary should contain item  ${resp.json()}      message     Logged in successful

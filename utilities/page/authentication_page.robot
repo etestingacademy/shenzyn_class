@@ -32,7 +32,7 @@ Launch the Application
     Call Method    ${chrome_options}   add_argument    disable-gpu
     Call Method    ${chrome_options}   add_argument    --no-sandbox
     Call Method    ${chrome_options}   add_argument    --ignore-certificate-errors
-#    ${options}=     Call Method     ${chrome_options}    to_capabilities     
+#    ${options}=     Call Method     ${chrome_options}    to_capabilities
     create webdriver    Chrome  chrome_options=${chrome_options}
     go to    http://${APPLICATION_HOST}/#/home?ref=bm
     set selenium implicit wait      60s

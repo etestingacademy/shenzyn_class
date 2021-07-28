@@ -45,3 +45,8 @@ Verify InValid Login Credentials
     Login To Application    ${u_name}   ${passwd}
     Verify Trainees tab visible     False
 
+Verify Trainees tab visible
+    [Arguments]     ${condition}
+#    sleep   5s
+    run keyword if     ${condition}     element should be visible       //div[@role="tab" and contains(text(),'Trainees')]      Trainees tab is not visible
+    ...     ELSE    element should not be visible       //div[@role="tab" and contains(text(),'Trainees')]      Trainees tab is not visible
