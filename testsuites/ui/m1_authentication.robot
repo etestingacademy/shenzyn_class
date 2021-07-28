@@ -15,7 +15,24 @@ ABC-1 : Coach InValid Login
     [Template]      Verify InValid Login Credentials
         arun.i232@shenzyn.com      Shenzyn@123
         arun.i2@shenzyn.com     Shenzyn1
+#####
+#Gherkin
 
+#Scenario:Verify Valid Coach Login
+#    [Tags]      Smoke
+#    Given I am able to login to coach
+##    And  There is no browser crash
+##    Given Login To Application As Coach
+#    Then I Verify If Trainees tab is visible    True
+##    And I Verify Notes tab is visible
+
+#("^I login to the application "${username}" & "${password}" $")
+#public verifyLogin(username,password)
+#{
+# launchBrowser()
+# setupURL()
+#
+#}
 
 *** Keywords ***
 Verify Valid Login Credentials
@@ -28,8 +45,3 @@ Verify InValid Login Credentials
     Login To Application    ${u_name}   ${passwd}
     Verify Trainees tab visible     False
 
-Verify Trainees tab visible
-    [Arguments]     ${condition}
-#    sleep   5s
-    run keyword if     ${condition}     element should be visible       //div[@role="tab" and contains(text(),'Trainees')]      Trainees tab is not visible
-    ...     ELSE    element should not be visible       //div[@role="tab" and contains(text(),'Trainees')]      Trainees tab is not visible

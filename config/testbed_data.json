@@ -6,5 +6,9 @@
   "organisation_login" : {
     "username" : "arun.i@shenzyn.com",
     "password" : "Shenzyn@123"
+  },
+  "notes_data": {
+    "title" : "Newtitle",
+    "Description" : "Description"
   }
 }

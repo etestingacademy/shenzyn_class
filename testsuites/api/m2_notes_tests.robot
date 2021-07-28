@@ -4,11 +4,13 @@ Resource    ./../../utilities/page/authentication_page.robot
 Resource    ./../../utilities/page/notes_page.robot
 #            Resource
 #Test Teardown   Close All Browsers
+Test Setup      API.Login To Application    arunxxx jsjs
 
 *** Test Cases ***
 Creating notes
-    [Tags]  Smoke
-    Login To Application As Coach
-    Navigate to Notes tab
-    Add Notes       Demo    Demo Description
-#    Verify Notes added successfully
+#    [Tags]  Smoke
+    API.Add Notes   ${auth_token}   title   desc
+
+#Edit Notes
+#
+#Delete Notes

@@ -27,7 +27,14 @@ Login To application
     click element       ${LOGINPAGE_SUBMIT_BUTTON}
 
 Launch the Application
-    open browser    http://${APPLICATION_HOST}/#/home?ref=bm    ${BROWSER}
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    --no-sandbox
+    Call Method    ${chrome_options}   add_argument    --ignore-certificate-errors
+#    ${options}=     Call Method     ${chrome_options}    to_capabilities     
+    create webdriver    Chrome  chrome_options=${chrome_options}
+    go to    http://${APPLICATION_HOST}/#/home?ref=bm
     set selenium implicit wait      60s
     maximize browser window
 

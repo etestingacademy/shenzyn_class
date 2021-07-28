@@ -7,7 +7,7 @@ Resource    ./../../utilities/page/notes_page.robot
 
 *** Test Cases ***
 Creating notes
-    [Tags]  Smoke
+    [Tags]  Smoke1
     Login To Application As Coach
     Navigate to Notes tab
     Add Notes       Demo    Demo Description
