@@ -2,7 +2,13 @@ pool:
   name: Default
 
 stages:
-  - stage : "Stage1"
+  - stage : "Build Test Env"
+    jobs:
+      - job: "Setup Docker image"
+        steps:
+          - script: echo "Create Test Env"
+
+  - stage : "Execute Application Test Runs"
     jobs:
       - job: "RunTests"
         timeoutInMinutes: 600
@@ -10,26 +16,25 @@ stages:
           image:  podocker86/robot-base-image-new:latest
           volumes:
             - /home/SlbWeCare/_work/2/s/:/automation
-            - /home/SlbWeCare/_work/2/s/Results:/automation/Results
+            - /home/SlbWeCare/_work/2/s/reports:/automation/reports
         steps:
-          - script: echo hello
           - script: ls /automation
-          - script: source /home/centos/downloads/env/bin/activate;robot --nostatusrc --variable BROWSER:chrome -x ./**/test-results/xunit.xml -v APPLICATION_HOST:equip.stage.shenzyn.com -v APPLICATION_HOST_API:equip-stage-api.shenzyn.com -v BROWSER:chrome --suitestatlevel 2 --outputdir /automation/Results/$(Build.BuildNumber)/  --include Smoke /automation/testsuites
+          - script: source /home/centos/downloads/env/bin/activate;robot --nostatusrc --variable BROWSER:chrome -v APPLICATION_HOST:equip.stage.shenzyn.com -v APPLICATION_HOST_API:equip-stage-api.shenzyn.com -v BROWSER:chrome --suitestatlevel 2 --outputdir /automation/Results/$(Build.BuildNumber)/  --include Smoke /automation/testsuites
           - task: PublishPipelineArtifact@1
             inputs:
-                targetPath: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)' # Required 
-                artifactName: 'drop' # Optional
+                targetPath: '/home/SlbWeCare/_work/2/s/reports/$(Build.BuildNumber)' # Required
+                artifactName: 'RobotResults' # Optional
 #           - task: PublishBuildArtifacts@1
 #             inputs:
 #               pathToPublish: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)'
 #               artifactName: RunResults
-          - task: PublishHtmlReport@1
-            inputs:
+#          - task: PublishHtmlReport@1
+#            inputs:
 #               testResultsFiles: report.html
 #               searchFolder: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/'
 #               condition: succeededOrFailed()
 #               displayName: 'Publish Test Results output.xml'
-                reportDir: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/report.html'
+#                reportDir: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/report.html'
 #             inputs:
 #     #testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
 #                 testResultsFiles: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/*.*ml' 
