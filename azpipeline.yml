@@ -21,7 +21,7 @@ stages:
 #               searchFolder: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/'
 #               condition: succeededOrFailed()
 #               displayName: 'Publish Test Results output.xml'
-                reportDir: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/report.html'
+                reportDir: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/*.html'
 #             inputs:
 #     #testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
 #                 testResultsFiles: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/*.*ml' 
