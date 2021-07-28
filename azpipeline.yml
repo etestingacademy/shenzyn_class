@@ -15,10 +15,14 @@ stages:
           - script: echo hello
           - script: ls /automation
           - script: source /home/centos/downloads/env/bin/activate;robot --nostatusrc --variable BROWSER:chrome -x ./**/test-results/xunit.xml -v APPLICATION_HOST:equip.stage.shenzyn.com -v BROWSER:headlesschrome --suitestatlevel 2 --outputdir /automation/Results/$(Build.BuildNumber)/  --include Smoke /automation/testsuites
-          - task: PublishBuildArtifacts@1
+          - task: PublishPipelineArtifact@1
             inputs:
-              pathToPublish: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)'
-              artifactName: RunResults
+                targetPath: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)' # Required 
+                artifactName: 'drop' # Optional
+#           - task: PublishBuildArtifacts@1
+#             inputs:
+#               pathToPublish: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)'
+#               artifactName: RunResults
           - task: PublishHtmlReport@1
             inputs:
 #               testResultsFiles: report.html
