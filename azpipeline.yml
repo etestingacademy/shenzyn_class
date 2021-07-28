@@ -2,13 +2,13 @@ pool:
   name: Default
 
 stages:
-  - stage : "Build Test Env"
+  - stage : "BuildTestEnv"
     jobs:
-      - job: "Setup Docker image"
+      - job: "Setup#Docker#image"
         steps:
           - script: echo "Create Test Env"
 
-  - stage : "Execute Application Test Runs"
+  - stage : "ExecuteApplicationTestRuns"
     jobs:
       - job: "RunTests"
         timeoutInMinutes: 600
