@@ -9,8 +9,8 @@ stages:
         container:
           image:  podocker86/robot-base-image-new:latest
           volumes:
-            - /home/SlbWeCare/_work/1/s/:/automation
-            - /home/SlbWeCare/_work/1/s/Results:/automation/Results
+            - /home/SlbWeCare/_work/2/s/:/automation
+            - /home/SlbWeCare/_work/2/s/Results:/automation/Results
         steps:
           - script: echo hello
           - script: ls /automation
@@ -18,7 +18,7 @@ stages:
           - task: PublishTestResults@2
             inputs:
     #testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
-                testResultsFiles: '/home/SlbWeCare/_work/1/s/Results/$(Build.BuildNumber)/*.*ml' 
+                testResultsFiles: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/*.*ml' 
     #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
     #mergeTestResults: false # Optional
     #failTaskOnFailedTests: false # Optional
