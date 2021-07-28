@@ -19,7 +19,7 @@ stages:
             - /home/SlbWeCare/_work/2/s/reports:/automation/reports
         steps:
           - script: ls /automation
-          - script: source /home/centos/downloads/env/bin/activate;robot --nostatusrc --variable BROWSER:chrome -v APPLICATION_HOST:equip.stage.shenzyn.com -v APPLICATION_HOST_API:equip-stage-api.shenzyn.com -v BROWSER:chrome --suitestatlevel 2 --outputdir /automation/Results/$(Build.BuildNumber)/  --include Smoke /automation/testsuites
+          - script: source /home/centos/downloads/env/bin/activate;robot --nostatusrc --variable BROWSER:chrome -v APPLICATION_HOST:equip.stage.shenzyn.com -v APPLICATION_HOST_API:equip-stage-api.shenzyn.com -v BROWSER:chrome --suitestatlevel 2 --outputdir /automation/reports/$(Build.BuildNumber)/  --include Smoke /automation/testsuites
           - task: PublishPipelineArtifact@1
             inputs:
                 targetPath: '/home/SlbWeCare/_work/2/s/reports/$(Build.BuildNumber)' # Required
