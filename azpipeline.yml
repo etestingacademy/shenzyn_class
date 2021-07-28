@@ -15,13 +15,17 @@ stages:
           - script: echo hello
           - script: ls /automation
           - script: source /home/centos/downloads/env/bin/activate;robot --nostatusrc --variable BROWSER:chrome -x ./**/test-results/xunit.xml -v APPLICATION_HOST:equip.stage.shenzyn.com -v BROWSER:headlesschrome --suitestatlevel 2 --outputdir /automation/Results/$(Build.BuildNumber)/  --include Smoke /automation/testsuites
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathToPublish: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)'
+              artifactName: RunResults
           - task: PublishHtmlReport@1
             inputs:
 #               testResultsFiles: report.html
 #               searchFolder: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/'
 #               condition: succeededOrFailed()
 #               displayName: 'Publish Test Results output.xml'
-                reportDir: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/*.html'
+                reportDir: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/report.html'
 #             inputs:
 #     #testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
 #                 testResultsFiles: '/home/SlbWeCare/_work/2/s/Results/$(Build.BuildNumber)/*.*ml' 
