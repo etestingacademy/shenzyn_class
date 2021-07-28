@@ -4,7 +4,7 @@ pool:
 stages:
   - stage : "BuildTestEnv"
     jobs:
-      - job: "Setup#Docker#image"
+      - job: "SetupDockerimage"
         steps:
           - script: echo "Create Test Env"
 
