@@ -34,7 +34,7 @@ Launch the Application
     Call Method    ${chrome_options}   add_argument    --ignore-certificate-errors
 #    ${options}=     Call Method     ${chrome_options}    to_capabilities
     create webdriver    Chrome  chrome_options=${chrome_options}
-    go to    http://${APPLICATION_HOST}/#/home?ref=bm
+    go to    http://${APPLICATION_HOST}/#/home?ref=cc
     set selenium implicit wait      60s
     maximize browser window
 
